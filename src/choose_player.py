@@ -3,7 +3,7 @@ import utils as u
 
 def choose_player():
     u.clear()
-
+    print(f"{u.LGREEN}Welcome to Tic Tac Toe!{u.RES}")
     while u.player != 'X' and u.player != 'O':
         try:
             u.player = input(f"{u.MAGENTA}Do you want to be X or O?: {u.RES}").upper().strip()
