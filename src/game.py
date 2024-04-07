@@ -1,54 +1,57 @@
-import random
-import clear as cl
+import msvcrt
 import print_board as pb
-import vars_and_board as vb
 import check_game_over as cg
 import choose_player as cp
-import colors as c
+import computer_move as cm
+import utils as u
 
 def game():
     var = 1
     while True:
         try:
-            if(var == 0):
-                cl.clear()
-            else:
+            if var:
                 var = 0
+            else:
+                u.clear()
             pb.print_board()
-            user_move = int(input(f"{c.BLUE}Enter your move (1-9): {c.RES}").strip())
-            if user_move < 1 or user_move > 9 or vb.board[user_move - 1] != ' ':
-                cl.clear()
-                print(f"{c.RED}Invalid move. Try again.{c.RES}")
+            user_move = int(input(f"{u.BLUE}Enter your move (1-9): {u.RES}").strip())
+            if user_move < 1 or user_move > 9 or u.board[user_move - 1] != ' ':
+                u.clear()
+                print(f"{u.RED}Invalid move. Try again.{u.RES}")
                 var = 1
                 continue
-            vb.board[user_move - 1] = vb.player
+            u.board[user_move - 1] = u.player
             game_over, result = cg.check_game_over()
             if game_over:
-                cl.clear()
+                u.clear()
                 pb.print_board()
-                print(c.CYAN + result + c.RES)
+                print(u.CYAN + result + u.RES)
                 break
             while True:
-                computer_move = random.randint(0, 8)
-                if vb.board[computer_move] == ' ':
-                    vb.board[computer_move] = vb.computer
+                computer_move = cm.computer_move()
+                if u.board[computer_move] == ' ':
+                    u.board[computer_move] = u.computer
                     break
             game_over, result = cg.check_game_over()
             if game_over:
-                cl.clear()
+                u.clear()
                 pb.print_board()
-                print(c.CYAN + result + c.RES)
+                print(u.CYAN + result + u.RES)
                 break
         except KeyboardInterrupt:
-            print(f"\n{c.CYAN}Exiting the game...{c.RES}")
+            print(f"\n{u.CYAN}Exiting the game...{u.RES}")
             break
         except Exception as e:
-            cl.clear()
-            print(f"{c.RED}Error: {e}{c.RES}")
+            u.clear()
+            print(f"{u.RED}Error: {e}{u.RES}")
             var = 1
             continue
 
-print(f"{c.LGREEN}Welcome to Tic Tac Toe!{c.RES}")
+print(f"{u.LGREEN}Welcome to Tic Tac Toe!{u.RES}")
 if cp.choose_player():
     exit()
+pb.print_board(1)
+print(f"{u.YELLOW}Press Enter to start the game...{u.RES}")
+msvcrt.getch()
+u.clear()
 game()

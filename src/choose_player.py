@@ -1,29 +1,27 @@
 import random
-import clear as cl
-import colors as c
-import vars_and_board as vb
+import utils as u
 
 def choose_player():
-    cl.clear()
+    u.clear()
 
-    while vb.player != 'X' and vb.player != 'O':
+    while u.player != 'X' and u.player != 'O':
         try:
-            vb.player = input(f"{c.MAGENTA}Do you want to be X or O?: {c.RES}").upper().strip()
-            if vb.player in ['X', 'O']:
-                vb.computer = 'O' if vb.player == 'X' else 'X'
-                if vb.computer == 'X':
-                    vb.board[random.randint(0, 8)] = vb.computer
+            u.player = input(f"{u.MAGENTA}Do you want to be X or O?: {u.RES}").upper().strip()
+            if u.player in ['X', 'O']:
+                u.computer = 'O' if u.player == 'X' else 'X'
+                if u.computer == 'X':
+                    u.board[random.randint(0, 8)] = u.computer
             else:
-                cl.clear()
-                print(f"{c.RED}Invalid input. Try again.{c.RES}")
+                u.clear()
+                print(f"{u.RED}Invalid input. Try again.{u.RES}")
                 continue
-            cl.clear()
-            print(f"{c.GREEN}You are {vb.player}. Computer is {vb.computer}.{c.RES}")
+            u.clear()
+            print(f"{u.GREEN}You are {u.player}. Computer is {u.computer}.{u.RES}")
             break
         except KeyboardInterrupt:
-            print(f"\n{c.CYAN}Exiting the game...{c.RES}")
+            print(f"\n{u.CYAN}Exiting the game...{u.RES}")
             return 1
         except Exception as e:
-            cl.clear()
-            print(f"{c.RED}Error: {e}{c.RES}")
+            u.clear()
+            print(f"{u.RED}Error: {e}{u.RES}")
             continue

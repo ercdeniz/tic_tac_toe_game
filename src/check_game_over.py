@@ -1,4 +1,4 @@
-import vars_and_board as vb
+import utils as u
 
 def check_game_over():
     win_conditions = [
@@ -7,8 +7,8 @@ def check_game_over():
         [0, 4, 8], [2, 4, 6]  # Diagonals index
     ]
     for condition in win_conditions:
-        if vb.board[condition[0]] == vb.board[condition[1]] == vb.board[condition[2]] != ' ':
-            return True, 'You win!' if vb.board[condition[0]] == vb.player else 'Computer wins!'
-    if ' ' not in vb.board:
+        if u.board[condition[0]] == u.board[condition[1]] == u.board[condition[2]] != ' ':
+            return True, 'You win!' if u.board[condition[0]] == u.player else 'Computer wins!'
+    if ' ' not in u.board:
         return True, 'The game is a draw! Want a rematch?'
     return False, ''
