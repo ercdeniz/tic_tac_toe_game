@@ -1,4 +1,3 @@
-import msvcrt
 import print_board as pb
 import check_game_over as cg
 import choose_player as cp
@@ -51,7 +50,6 @@ print(f"{u.LGREEN}Welcome to Tic Tac Toe!{u.RES}")
 if cp.choose_player():
     exit()
 pb.print_board(1)
-print(f"{u.YELLOW}Press Enter to start the game...{u.RES}")
-msvcrt.getch()
+input(f"{u.YELLOW}Press Enter to start the game...{u.RES}")
 u.clear()
 game()
