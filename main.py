@@ -27,6 +27,5 @@ if __name__ == "__main__":
         remove_pycache()
     except KeyboardInterrupt:
         remove_pycache()
-        print("Exited")
     except Exception as e:
         print(f"Error: {e}")

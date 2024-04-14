@@ -8,9 +8,16 @@ def clear():
     else:
         os.system('clear')
 
+# constants
+single = "Enter your move (1-9): "
+prompt_1 = "Player 1, enter your move (1-9): "
+prompt_2 = "Player 2, enter your move (1-9): "
+
 # global variables
 player = ' '
+player_2 = ' '
 computer = ' '
+game_status = ' '
 
 # Initialize the board
 board = [' ' for _ in range(9)]
