@@ -6,7 +6,6 @@ def check_and_install_module():
     module_name = "colorama"
     try:
         importlib.metadata.version(module_name)
-        print(f"{module_name} module is already installed.")
     except importlib.metadata.PackageNotFoundError:
         print(f"{module_name} module is not installed. Installing...")
         try:

@@ -1,4 +1,3 @@
-import random
 import utils as u
 
 def choose_player():
@@ -19,7 +18,7 @@ def choose_player():
                     if u.player in ['X', 'O']:
                         u.computer = 'O' if u.player == 'X' else 'X'
                         if u.computer == 'X':
-                            u.board[random.randint(0, 8)] = u.computer
+                            u.board[4] = u.computer
                     else:
                         u.clear()
                         print(f"{u.RED}Invalid input. Try again.{u.RES}")
